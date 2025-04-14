@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <%- include('./partials/head')  %>
-   <title>Homepage</title>
+    <title>Homepage</title>
 </head>
 <body>
     <%- include('./partials/nav')  %>
-    <%= JSON.stringify(user) %>
+
+    <div class="container mt-3">
+        <% blogs.forEach(element => { %>
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="<%= element.coverImageUrl %>" class="card-img-top" alt="cover image">
+                <div class="card-body">
+                    <h5 class="card-title"><%= element.title %></h5>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
     <%- include('./partials/scripts')  %>
 </body>
 </html>
