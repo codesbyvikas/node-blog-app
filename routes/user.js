@@ -25,11 +25,19 @@ router.post('/signup', async(req, res) =>{
 
 router.post('/signin',async (req,res) =>{
     const { email, password } =   req.body;
+    try{
     const token = await User.matchPasswordAndGenerateToken(email, password);
 
-    console.log('Token',token);
-
-    return res.redirect("/");
+    return res.cookie('token',token).redirect("/");
+    }catch(error){
+        return res.render('signin',{
+            error: "Incorrect Credentials"
+        });
+    }   
 });
+
+router.get("/logout", (req,res) =>{
+    res.clearCookie("token").redirect("/");
+})
 
 module.exports = router;
