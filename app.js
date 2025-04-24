@@ -4,7 +4,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
-const userRoute = require("./routes/user");4
+const userRoute = require("./routes/user");
 const blogRoute = require("./routes/blog");
 const checkForAuthCookie = require("./middlewares/auth");
 const Blog = require("./models/blog");
